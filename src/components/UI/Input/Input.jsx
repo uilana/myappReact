@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
+import classes from "./Input.modules.css";
+const Input = (props) => {
+  return <input type="text" className={classes.mainInput} {...props}></input>;
+};
 
-const Input = () => {
-  return (
-    <input type="text" />
-  )
-}
-
-export default Input
+export default Input;

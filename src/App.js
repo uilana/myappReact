@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./styles/App.css"
 import { PostList } from "./components/PostList";
 import MyButton from "./components/UI/Button/MyButton";
+import Input from "./components/UI/Input/Input";
 function App() {
   let [value, setValue] = useState("Click on button");
   let [posts, setPosts] = useState([
@@ -31,7 +32,9 @@ function App() {
       
       <PostList posts={posts} title={"Title1"}  />
       <PostList posts={values} title={"TITLE"}  />
+    
       <MyButton disabled>create</MyButton>
+      <Input placeholder="Ввод"></Input>
     </div>
   );
 }
