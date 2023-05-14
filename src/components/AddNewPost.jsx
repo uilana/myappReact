@@ -3,8 +3,6 @@ import { useState } from "react";
 import MyInput from "./UI/Input/MyInput";
 import MyButton from "./UI/Button/MyButton";
 const AddNewPost = ({create}) => {
-//   const [title, setTitle] = useState("");
-//   const [description, setDescription] = useState("");
   const [post, setPost] = useState({title:"", description:""})
 
   const add = (event) => {

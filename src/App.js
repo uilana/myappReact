@@ -15,6 +15,9 @@ function App() {
   const createPost=(newPost)=>{
     setPosts([...posts, newPost])
   }
+  const removePost=(post)=>{
+    setPosts(posts.filter((p)=>p.id !==post.id))
+  }
   return (
     <div className="App">
       {/* <Counter />
@@ -29,7 +32,7 @@ function App() {
       />
       <h1>{value}</h1> */}
       <AddNewPost create={createPost} />
-      <PostList posts={posts} title={"Title1"} />
+      <PostList remove={removePost} posts={posts} title={"Title1"} />
     </div>
   );
 }
