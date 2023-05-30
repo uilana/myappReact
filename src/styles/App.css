@@ -1,24 +1,57 @@
-*{
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: cornsilk;
+ 
 }
-#root{
-display: flex;
-justify-content: center;
+#root {
+  display: flex;
+  justify-content: center;
 }
-.App{
-    width: 800px;
+.App {
+  width: 800px;
+}
+.post {
+    align-items:justify;
+  display: flex;
+  padding: 20px;
+  border: 5px solid #5090d3;
+  border-radius: 10px;
+  margin-top: 1%;
+/* max-width:90%; */
+  align-items: center;
+  justify-content: space-between;
+}
+.description {
+  font-family: "Roboto", sans-serif;
+  /* font-size:; */
+  font-weight: normal;
+  color: #0a1929;
+  display: block;
+}
 
+hr {
+  margin: 20px 0;
+  padding: 0;
+  height: 0;
+  border: none;
+  border-top: 2px dashed #0a1929;
 }
-.post{
-    display: flex;
-    padding: 20px;
-    border: 5px solid rgb(0, 0, 0);
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    align-items: center;
-    justify-content: space-between;
+h1 {
+  font-family: "Roboto", sans-serif;
+  /* font-size:; */
+  font-weight: bold;
+  color: #0a1929;
 }
-
+h2 {
+  font-family: "Roboto", sans-serif;
+  /* font-size:; */
+  font-weight: bold;
+  color: #0a1929;
+}
+input {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: #0a1929;
+}

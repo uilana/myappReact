@@ -1,7 +1,16 @@
+
 .mainButton{
-    padding: 5px 10px;
-    color: rgb(230, 0, 0);
-    background: rgb(0, 0, 0);
-    border: 3px solid rgb(37, 37, 37);
+    font-family: 'Roboto', sans-serif;
+    font-size:medium;
+    font-weight: bold;
+    padding: 10px 17px;
+    color: #0a1929;
+    background: #5090d3;
+    border: none;
+    /* border: 3px solid #1e4976; */
+    border-radius: 10px;
     cursor: pointer;
+}
+.mainButton:hover{
+    background: #2b5a8d;
 }

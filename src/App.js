@@ -35,34 +35,27 @@ function App() {
     return sortPosts.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()));
   }, [search,sortPosts]);
 
+
   return (
     <div className="App">
-      {/* <Counter />
-      <Counter />
-      <input
-        className="text"
-        value={value}
-        onChange={(event) => {
-          console.log(event);
-          return setValue(event.target.value);
-        }}
-      />
-      <h1>{value}</h1> */}
       <AddNewPost create={createPost} />
       <hr></hr>
       <MySelect
         options={[
-          { value: "title", name: "по названию" },
-          { value: "description", name: "по описанию" },
+          { value: "title", name: "by name" },
+          { value: "description", name: "by description" },
         ]}
         onChange={sortPosts}
         value={select}
       ></MySelect>
       <hr></hr>
+      <div style={{ 'text-align': 'center'}}>
       <MyInput
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       ></MyInput>
+      </div>
+      
       {posts.length ? (
         <PostList remove={removePost} posts={searchPosts} title={"Title1"} />
       ) : (

@@ -1,0 +1,25 @@
+.select__box{
+    box-sizing: border-box;
+    text-align: center;
+  
+}
+.mainSelect{
+    font-family: 'Roboto', sans-serif;
+    font-size:medium;
+    font-weight: bold;
+    border: none;
+    background: #5090d3;
+    /* color: #2b5a8d; */
+    border-radius: 5px;
+    margin: 10px 12px;
+    padding: 10px 12px;
+   
+}
+.mainOption{
+    font-family: 'Roboto', sans-serif;
+    font-size:medium;
+    font-weight: bold;
+}
+
+
+ 
