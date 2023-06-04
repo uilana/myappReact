@@ -2,21 +2,20 @@ import React, { useMemo } from "react";
 import { useState } from "react";
 import "./styles/App.css";
 import { PostList } from "./components/PostList";
+import PostFilter from "./components/PostFilter";
 import MySelect from "./components/UI/Select/MySelect";
+import PostServes from "./api/PostServes";
 // import MyButton from "./components/UI/Button/MyButton";
 // import MyInput from "./components/UI/Input/MyInput";
 import AddNewPost from "./components/AddNewPost";
 import MyInput from "./components/UI/Input/MyInput";
 function App() {
   let [value, setValue] = useState("Click on button");
-  let [posts, setPosts] = useState([
-    { title: "Title4", description: "description3", id: 1 },
-    { title: "Title2", description: "description2", id: 2 },
-    { title: "Title3", description: "description4", id: 3 },
-  ]);
-  let [select, setSelect] = useState("title");
-  let [search, setSearch] = useState("");
-
+  let [posts, setPosts] = useState([]);
+  let [filter, setFilter] = useState({ sort: "", query: "" });
+  let response = PostServes.getAll(10, 2);
+  setPosts(response.data);
+  
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
@@ -25,42 +24,32 @@ function App() {
     setPosts(posts.filter((p) => p.id !== post.id));
   };
 
-  const sortPosts = useMemo(() => {
-    if (select)
-    {return [...posts].sort((a, b) => a[select].localeCompare(b[select]))} 
-    return posts
-  },[select,posts])
+  const sortedPosts = useMemo(() => {
+    if (filter.sort) {
+      return [...posts].sort((a, b) =>
+        a[filter.sort].localeCompare(b[filter.sort])
+      );
+    }
+    return posts;
+  }, [filter.sort, posts]);
 
-  const searchPosts = useMemo(() => {
-    return sortPosts.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()));
-  }, [search,sortPosts]);
-
+  const searchAndSortedPosts = useMemo(() => {
+    return sortedPosts.filter((post) =>
+      post.title.toLowerCase().includes(filter.query.toLowerCase())
+    );
+  }, [filter.query, sortedPosts]);
 
   return (
     <div className="App">
       <AddNewPost create={createPost} />
       <hr></hr>
-      <MySelect
-        options={[
-          { value: "title", name: "by name" },
-          { value: "description", name: "by description" },
-        ]}
-        onChange={sortPosts}
-        value={select}
-      ></MySelect>
-      <hr></hr>
-      <div style={{ 'text-align': 'center'}}>
-      <MyInput
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-      ></MyInput>
-      </div>
-      
-      {posts.length ? (
-        <PostList remove={removePost} posts={searchPosts} title={"Title1"} />
-      ) : (
-        <h3>нет постов</h3>
-      )}
+
+      <PostFilter filter={filter} setFilter={setFilter} />
+      <PostList
+        remove={removePost}
+        posts={searchAndSortedPosts}
+        title={"Title1"}
+      />
     </div>
   );
 }
